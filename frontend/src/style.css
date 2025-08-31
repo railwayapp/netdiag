@@ -1,0 +1,151 @@
+:root {
+  --foreground: hsl(0, 0%, 100%);
+  --background: hsl(250, 24%, 9%);
+  --secondaryBg: hsl(250, 21%, 11%);
+  --blue-50: hsl(220, 55%, 10%);
+  --blue-100: hsl(220, 55%, 13%);
+  --blue-200: hsl(220, 62%, 25%);
+  --blue-300: hsl(220, 68%, 35%);
+  --blue-400: hsl(220, 72%, 45%);
+  --blue-500: hsl(220, 80%, 55%);
+  --blue-600: hsl(220, 80%, 65%);
+  --blue-700: hsl(220, 80%, 75%);
+  --blue-800: hsl(220, 80%, 85%);
+  --blue-900: hsl(220, 80%, 95%);
+  --blue-950: hsl(220, 55%, 97%);
+  --cyan-50: hsl(180, 25%, 10%);
+  --cyan-100: hsl(180, 36%, 11%);
+  --cyan-200: hsl(180, 45%, 16%);
+  --cyan-300: hsl(180, 50%, 28%);
+  --cyan-400: hsl(180, 50%, 38%);
+  --cyan-500: hsl(180, 50%, 44%);
+  --cyan-600: hsl(180, 50%, 62%);
+  --cyan-700: hsl(180, 50%, 72%);
+  --cyan-800: hsl(180, 50%, 80%);
+  --cyan-900: hsl(180, 58%, 91%);
+  --cyan-950: hsl(180, 40%, 97%);
+  --gray-50: hsl(248, 21%, 13%);
+  --gray-100: hsl(246, 18%, 15%);
+  --gray-200: hsl(246, 11%, 22%);
+  --gray-300: hsl(246, 8%, 35%);
+  --gray-400: hsl(246, 7%, 45%);
+  --gray-500: hsl(246, 6%, 55%);
+  --gray-600: hsl(246, 6%, 65%);
+  --gray-700: hsl(246, 6%, 78%);
+  --gray-800: hsl(246, 6%, 87%);
+  --gray-900: hsl(246, 6%, 95%);
+  --gray-950: hsl(246, 4%, 97%);
+  --red-50: hsl(1, 35%, 10%);
+  --red-100: hsl(1, 45%, 12%);
+  --red-200: hsl(1, 55%, 20%);
+  --red-300: hsl(1, 62%, 28%);
+  --red-400: hsl(1, 62%, 35%);
+  --red-500: hsl(1, 62%, 44%);
+  --red-600: hsl(1, 62%, 60%);
+  --red-700: hsl(1, 62%, 76%);
+  --red-800: hsl(1, 64%, 85%);
+  --red-900: hsl(1, 68%, 95%);
+  --red-950: hsl(1, 55%, 98%);
+  --pink-50: hsl(270, 38%, 12%);
+  --pink-100: hsl(270, 40%, 16%);
+  --pink-200: hsl(270, 45%, 24%);
+  --pink-300: hsl(270, 50%, 32%);
+  --pink-400: hsl(270, 55%, 43%);
+  --pink-500: hsl(270, 60%, 52%);
+  --pink-600: hsl(270, 70%, 65%);
+  --pink-700: hsl(270, 70%, 75%);
+  --pink-800: hsl(270, 70%, 85%);
+  --pink-900: hsl(270, 70%, 95%);
+  --pink-950: hsl(270, 70%, 98%);
+  --green-50: hsl(152, 15%, 10%);
+  --green-100: hsl(152, 26%, 11%);
+  --green-200: hsl(152, 32%, 16%);
+  --green-300: hsl(152, 38%, 24%);
+  --green-400: hsl(152, 38%, 34%);
+  --green-500: hsl(152, 38%, 42%);
+  --green-600: hsl(152, 38%, 60%);
+  --green-700: hsl(152, 38%, 70%);
+  --green-800: hsl(152, 38%, 80%);
+  --green-900: hsl(152, 38%, 91%);
+  --green-950: hsl(152, 40%, 97%);
+  --yellow-50: hsl(44, 40%, 08%);
+  --yellow-100: hsl(44, 40%, 10%);
+  --yellow-200: hsl(44, 50%, 16%);
+  --yellow-300: hsl(44, 62%, 25%);
+  --yellow-400: hsl(44, 70%, 40%);
+  --yellow-500: hsl(44, 74%, 52%);
+  --yellow-600: hsl(44, 78%, 62%);
+  --yellow-700: hsl(44, 78%, 72%);
+  --yellow-800: hsl(44, 78%, 80%);
+  --yellow-900: hsl(44, 78%, 90%);
+  --yellow-950: hsl(44, 75%, 97%);
+  --spreadShadow: 0 0 30px hsla(0, 0%, 30%, 0.25);
+}
+
+html {
+  background-color: var(--secondaryBg);
+  color: var(--foreground);
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--secondaryBg);
+  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local(""),
+    url("fonts/Inter-VariableFont_opsz,wght.ttf") format("ttf");
+}
+
+#app {
+  height: 100vh;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.3em !important;
+}
+
+div::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: darkgrey !important;
+  outline: 1px solid slategrey !important;
+}
+
+a {
+  color: var(--pink-800);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.noselect {
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

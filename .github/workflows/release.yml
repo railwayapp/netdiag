@@ -1,0 +1,80 @@
+name: "Build & Release"
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  run:
+    strategy:
+      fail-fast: false
+      matrix:
+        build:
+          - target: "macOS"
+            platform: "darwin/universal"
+
+          - target: "Win"
+            platform: "windows/amd64"
+
+    runs-on: >-
+      ${{
+        contains(matrix.build.platform, 'windows') && 'windows-latest' ||
+        contains(matrix.build.platform, 'darwin') && 'macos-latest' ||
+        'ubuntu-latest'
+      }}
+
+    env:
+      NODE_OPTIONS: "--max-old-space-size=4096"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: "1.23"
+
+      - name: Install node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          package_json_file: frontend/package.json
+
+      - name: Install wails
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.10.2
+
+      - name: Build app
+        run: >
+          wails build
+          -clean
+          -platform ${{ matrix.build.platform }}
+
+      - name: Fix macOS binary permissions
+        if: matrix.build.target == 'macOS'
+        run: >
+          chmod +x build/bin/*/Contents/MacOS/*
+
+      - name: Create and prepare release directory
+        run: |
+          mkdir -p release/pkg
+          mkdir -p release/RailwayNetDiag_${{ matrix.build.target }}
+          mv build/bin/* release/RailwayNetDiag_${{ matrix.build.target }}/
+
+      - name: Package for release
+        uses: thedoctor0/zip-release@0.7.5
+        with:
+          type: zip
+          directory: release
+          path: RailwayNetDiag_${{ matrix.build.target }}
+          filename: pkg/RailwayNetDiag_${{ matrix.build.target }}.zip
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release/pkg/**
