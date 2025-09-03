@@ -66,6 +66,21 @@ jobs:
           mkdir -p release/RailwayNetDiag_${{ matrix.build.target }}
           mv build/bin/* release/RailwayNetDiag_${{ matrix.build.target }}/
 
+      - name: Codesign (Windows)
+        if: matrix.build.target == 'Win'
+        uses: sslcom/esigner-codesign@develop
+        with:
+          command: sign
+          username: ${{secrets.SSLCOM_USERNAME}}
+          password: ${{secrets.SSLCOM_PASSWORD}}
+          credential_id: ${{secrets.SSLCOM_CREDENTIAL_ID}}
+          totp_secret: ${{secrets.SSLCOM_TOTP_SECRET}}
+          signing_method: v1
+          dir_path: ${{ github.workspace }}/release/RailwayNetDiag_Win
+          file_path: ${{ github.workspace }}/release/RailwayNetDiag_Win/RailwayNetDiag.exe
+          override: true
+          clean_logs: true
+
       - name: Package for release
         uses: thedoctor0/zip-release@0.7.5
         with:
