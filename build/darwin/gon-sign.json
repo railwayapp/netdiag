@@ -1,0 +1,15 @@
+{
+  "source": ["./build/bin/RailwayNetDiag.app"],
+  "bundle_id": "com.railway.netdiag",
+  "apple_id": {
+    "username": "",
+    "password": "",
+    "provider": ""
+  },
+  "sign": {
+    "application_identity": ""
+  },
+  "zip": {
+    "output_path": "RailwayNetDiag.zip"
+  }
+}
