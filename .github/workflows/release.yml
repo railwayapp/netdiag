@@ -60,11 +60,35 @@ jobs:
         run: >
           chmod +x build/bin/*/Contents/MacOS/*
 
+      - name: Download gon for code signing and notarization (macOS)
+        if: matrix.build.target == 'macOS'
+        run: |
+          brew install Bearer/tap/gon
+
+      - name: Import codesigning certificates (macOS)
+        if: matrix.build.target == 'macOS'
+        uses: Apple-Actions/import-codesign-certs@v1
+        with:
+          p12-file-base64: ${{ secrets.APPLE_CODESIGN_CERT }}
+          p12-password: ${{ secrets.APPLE_CODESIGN_CERT_PASSPHRASE }}
+
+      - name: Codesign (macOS)
+        if: matrix.build.target == 'macOS'
+        env:
+          AC_USERNAME: ${{ secrets.APPLE_CODESIGN_NOTARY_USER }}
+          AC_PASSWORD: ${{ secrets.APPLE_CODESIGN_NOTARY_PASSWORD }}
+          AC_PROVIDER: ${{ secrets.APPLE_CODESIGN_ACCOUNT_ID }}
+          AC_APPLICATION_IDENTITY: ${{ secrets.APPLE_CODESIGN_APP_IDENTITY }}
+        run: |
+          echo "Signing package"
+          gon -log-level=info ./build/darwin/gon-sign.json
+
       - name: Create and prepare release directory
         run: |
           mkdir -p release/pkg
           mkdir -p release/RailwayNetDiag_${{ matrix.build.target }}
           mv build/bin/* release/RailwayNetDiag_${{ matrix.build.target }}/
+          ls -l release/RailwayNetDiag_${{ matrix.build.target }}/
 
       - name: Codesign (Windows)
         if: matrix.build.target == 'Win'
