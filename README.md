@@ -1,36 +1,14 @@
 # Railway NetDiag
 
-[**Download for macOS**](https://github.com/railwayapp/netdiag/releases/latest/download/RailwayNetDiag_macOS.zip) | [**Download for Windows**](https://github.com/railwayapp/netdiag/releases/latest/download/RailwayNetDiag_Win.zip)
-
 macOS & Windows application for diagnosing client networking issues to Railway.
 
 ![railway-netdiag screenshot](./docs/screenshot.png)
 
 ## Usage
 
-1. Download the latest version ([macOS](https://github.com/railwayapp/netdiag/releases/latest/download/RailwayNetDiag_macOS.zip) | [Windows](https://github.com/railwayapp/netdiag/releases/latest/download/RailwayNetDiag_Win.zip))
-2. Open the application
-3. Click "Run Diagnostics"
-4. Wait for the diagnostics to complete
-5. Copy the results to your clipboard or save them to a file
-6. Share the results with Railway support for further assistance
+[**Download for macOS**](https://github.com/railwayapp/netdiag/releases/latest/download/RailwayNetDiag_macOS.zip) | [**Download for Windows**](https://github.com/railwayapp/netdiag/releases/latest/download/RailwayNetDiag_Win.zip)
 
-## ⚠️ About Security Warnings
-
-When you launch the application for the first time, you may encounter security
-warnings from your OS. **This happens because the app is not code-signed yet**.
-You can wait for a new release of the code-signed app (by mid-Sept '25), or
-you can use it now by bypassing the warnings:
-
-- On macOS:
-  1. Open the app once
-  2. Go to System Preferences -> Privacy & Security
-  3. Scroll down to the warning at the bottom under "Allow applications from"
-  4. Click "Open Anyway" for Railway NetDiag.app
-
-- On Windows:
-  1. Click "More info" on the "Windows protected your PC" popup
-  2. Click "Run Anyway"
+Refer to [documentation](https://docs.railway.com/reference/network-diagnostics).
 
 ## Development
 

@@ -13,7 +13,7 @@
   "info": {
     "companyName": "Railway Corporation",
     "productName": "Railway NetDiag",
-    "productVersion": "0.0.1",
+    "productVersion": "0.0.3",
     "copyright": "(c) 2025 Railway Corporation",
     "comments": "A tool for diagnosing client networking issues to Railway."
   }
